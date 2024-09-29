@@ -7,11 +7,11 @@ var https = require('https')
 
 const App = require("./app")
 
-const serverPort = process.env.serverPort
-const useTLS = process.env.useTLS
+let serverPort = process.env.serverPort || 80
+const useTLS = process.env.useTLS === "true" || false
 Instance.use(App.router)
 
-if(!(useTLS === "true")){
+if(!useTLS){
   //啟動服務
   Instance.listen(serverPort, () => {
     console.log('Server listening on port ' + serverPort + '!')
