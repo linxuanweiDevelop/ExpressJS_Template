@@ -3,14 +3,13 @@ const router = express.Router()
 require('dotenv').config()
 
 const cors = require('cors')
-const bodyParser = require('body-parser')
 
 //設置跨來源共享
 router.use(cors())
 
 //設置body-parser中間件
-router.use(bodyParser.json())
-router.use(bodyParser.urlencoded({ extended: false }))
+router.use(express.json())
+router.use(express.urlencoded({ extended: false }))
 
 router.get('/', (req, res)=>{
     const userAgent = req.headers["user-agent"]
